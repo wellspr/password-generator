@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Password Generator</title>
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <section class="app-title">Password Generator</section>
+            <section class="password-config">
+
+                <div class="row-1">
+                    <div class="config-option">
+                        <input type="checkbox" id="numbers-check" checked>
+                        <label for="numbers-check">Numbers</label>
+                    </div>
+
+                    <div class="config-option">
+                        <input type="checkbox" id="lcletters-check" checked>
+                        <label for="lcletters-check">Lowercase Letters</label>
+                    </div>
+
+                    <div class="config-option">
+                        <input type="checkbox" id="ucletters-check" checked>
+                        <label for="ucletters-check">Upercase Letters</label>
+                    </div>
+
+                    <div class="config-option">
+                        <input type="checkbox" id="symbols-check" checked>
+                        <label for="symbols-check">Symbols</label>
+                    </div>
+                </div>
+
+                <div class="row-2">
+                    <div class="config-option">
+                        <label for="password-length-input">Password Length</label>
+                        <input type="number" name="password-length" id="password-length-input" class="password-length"
+                            value="20">
+                    </div>
+                    <div class="config-option">
+                        <label for="password-length-input">Exlude: </label>
+                        <input type="text" name="chars-to-exclude" id="chars-to-exclude" class="chars-to-exclude">
+                    </div>
+                </div>
+            </section>
+        </header>
+        <main class="main-container">
+            <section class="password-container">
+                <div class="password-input-group">
+                    <label for="password-input">Your Password</label>
+                    <input type="text" name="password" id="password-input" class="password">
+                </div>
+                <div class="controls">
+                    <button type="button" class="button button__copy">
+                        <span class="label">Copy</span>
+                        <img src="/src/icons/clipboard.svg" alt="">
+                    </button>
+                    <button type="button" class="button button__regenerate">
+                        <span class="label">Regenerate</span>
+                        <img src="/src/icons/refresh.svg" alt="">
+                    </button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <section class="copy">&copy; 2023 - Paulo Wells</section>
+        </footer>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
