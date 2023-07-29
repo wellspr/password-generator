@@ -158,9 +158,9 @@ numbersCheckbox.addEventListener("change", (e) => {
     includesNumbers = e.target.checked;
 
     if (includesNumbers) {
-        document.querySelector(".config-option .numbers").src = "/src/icons/square-check.svg";
+        document.querySelector(".config-option .numbers").src = "icons/square-check.svg";
     } else {
-        document.querySelector(".config-option .numbers").src = "/src/icons/square.svg";
+        document.querySelector(".config-option .numbers").src = "icons/square.svg";
     }
 });
 const lclettersCheckbox = document.getElementById("lcletters-check");
@@ -169,9 +169,9 @@ lclettersCheckbox.addEventListener("change", (e) => {
     includesLowerCaseLetters = e.target.checked;
 
     if (includesLowerCaseLetters) {
-        document.querySelector(".config-option .lcletters").src = "/src/icons/square-check.svg";
+        document.querySelector(".config-option .lcletters").src = "icons/square-check.svg";
     } else {
-        document.querySelector(".config-option .lcletters").src = "/src/icons/square.svg";
+        document.querySelector(".config-option .lcletters").src = "icons/square.svg";
     }
 });
 const uclettersCheckbox = document.getElementById("ucletters-check");
@@ -180,9 +180,9 @@ uclettersCheckbox.addEventListener("change", (e) => {
     includesUpperCaseLetters = e.target.checked;
 
     if (includesUpperCaseLetters) {
-        document.querySelector(".config-option .ucletters").src = "/src/icons/square-check.svg";
+        document.querySelector(".config-option .ucletters").src = "icons/square-check.svg";
     } else {
-        document.querySelector(".config-option .ucletters").src = "/src/icons/square.svg";
+        document.querySelector(".config-option .ucletters").src = "icons/square.svg";
     }
 });
 const symbolsCheckbox = document.getElementById("symbols-check");
@@ -191,9 +191,9 @@ symbolsCheckbox.addEventListener("change", (e) => {
     includesSymbols = e.target.checked;
 
     if (includesSymbols) {
-        document.querySelector(".config-option .symbols").src = "/src/icons/square-check.svg";
+        document.querySelector(".config-option .symbols").src = "icons/square-check.svg";
     } else {
-        document.querySelector(".config-option .symbols").src = "/src/icons/square.svg";
+        document.querySelector(".config-option .symbols").src = "icons/square.svg";
     }
 });
 
@@ -218,7 +218,7 @@ buttonCopy.addEventListener("click", () => {
     navigator.clipboard.writeText(passwordInput.value).then(() => {
         textCopied = true;
         buttonCopyLabel.innerHTML = "Copied!";
-        buttonCopyImage.src = "/src/icons/check.svg";
+        buttonCopyImage.src = "icons/check.svg";
         buttonCopy.classList.add("button__copy--copied");
     });
 });
@@ -229,7 +229,7 @@ buttonRegenerate.addEventListener("click", () => {
     provideFreshPassword();
     textCopied = false;
     buttonCopyLabel.innerHTML = "Copy";
-    buttonCopyImage.src = "/src/icons/clipboard.svg";
+    buttonCopyImage.src = "icons/clipboard.svg";
     buttonCopy.classList.remove("button__copy--copied");
 });
 
