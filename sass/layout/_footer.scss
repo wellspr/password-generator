@@ -1,12 +1,21 @@
 .footer {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     flex-wrap: wrap;
     gap: 3rem;
     padding: 1rem 0;
 
-    .attribution {
+    .section-attribution {
         display: flex;
-        gap: .5rem;
+        gap: 0.5rem;
+    }
+
+    .section-github {
+        & a > * {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
     }
 }
