@@ -1,0 +1,44 @@
+body {
+    color: $color-font-light;
+}
+
+.section-app-title {
+    margin-bottom: 1.5rem;
+}
+
+.section-password-config {
+    background-color: $color-background-box;
+
+    label {
+        background-color: rgba(#333, 0.5);
+    }
+}
+
+.section-password-container {
+    .password-input-group {
+        background-color: $color-background-box;
+
+        .password {
+            background-color: transparent;
+            color: $color-font-light;
+        }
+    }
+}
+
+.button {
+    background-color: transparent;
+
+    &__copy, &__regenerate {
+        background-color: rgba(#333, .75);
+        color: #ddd;
+    }
+}
+
+.footer {
+
+    background-color: rgba(#333, .3);
+
+    a {
+        color: azure;
+    }
+}

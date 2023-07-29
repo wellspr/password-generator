@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700;900&family=Public+Sans:wght@400;700;900&family=Roboto+Mono&family=Varela+Round&display=swap");
+
+body {
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+}
+
+.section-app-title {
+    &__title {
+        font-size: 3.5rem;
+        font-family: 'Prompt', sans-serif;
+        letter-spacing: 3px;
+    }
+}
+
+.section-password-config {
+    
+    label {
+        font-size: 1.4rem;
+    }
+}
+
+.section-password-container {
+
+    .password-input-group {
+
+        label {
+            font-size: 2rem;
+            
+            &::after {
+                content: ":";
+            }
+        }
+        
+        .password {
+            font-size: 3.5rem;
+            font-family: 'Roboto Mono', monospace;
+            
+            @media (max-width: 600px) {
+                font-size: 2.4rem;   
+            }
+        }
+    }
+}
+
+.button {
+    &__copy, &__regenerate {
+
+        .label {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.footer {
+    font-size: 1.2rem;
+}

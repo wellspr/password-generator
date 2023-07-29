@@ -11,46 +11,66 @@
 <body>
     <div class="app">
         <header class="header">
-            <section class="app-title">Password Generator</section>
-            <section class="password-config">
-
-                <div class="row-1">
+            <section class="section-app-title">
+                <h1 class="section-app-title__title">Password Generator</h1>
+            </section>
+            <section class="section-password-config">
+                <div class="row row__1">
                     <div class="config-option">
-                        <input type="checkbox" id="numbers-check" checked>
-                        <label for="numbers-check">Numbers</label>
+                        <label for="numbers-check">
+                            <img class="numbers" src="/src/icons/square-check.svg" alt="">
+                            <input type="checkbox" id="numbers-check" checked hidden>
+                            Numbers
+                        </label>
                     </div>
 
                     <div class="config-option">
-                        <input type="checkbox" id="lcletters-check" checked>
-                        <label for="lcletters-check">Lowercase Letters</label>
+                        <label for="lcletters-check">
+                            <img class="lcletters" src="/src/icons/square-check.svg" alt="">
+                            <input type="checkbox" id="lcletters-check" checked hidden>
+                            Lowercase Letters
+                        </label>
                     </div>
 
                     <div class="config-option">
-                        <input type="checkbox" id="ucletters-check" checked>
-                        <label for="ucletters-check">Upercase Letters</label>
+                        <label for="ucletters-check">
+                            <img class="ucletters" src="/src/icons/square-check.svg" alt="">
+                            <input type="checkbox" id="ucletters-check" checked hidden>
+                            Upercase Letters
+                        </label>
                     </div>
 
                     <div class="config-option">
-                        <input type="checkbox" id="symbols-check" checked>
-                        <label for="symbols-check">Symbols</label>
+                        <label for="symbols-check">
+                            <img class="symbols" src="/src/icons/square-check.svg" alt="">
+                            <input type="checkbox" id="symbols-check" checked hidden>
+                            Symbols
+                        </label>
                     </div>
                 </div>
-
-                <div class="row-2">
+                <div class="row row__2">
                     <div class="config-option">
                         <label for="password-length-input">Password Length</label>
-                        <input type="number" name="password-length" id="password-length-input" class="password-length"
-                            value="20">
+                        <div class="controls">
+                            <button class="button button__minus">
+                                <img src="/src/icons/square-minus.svg" alt="">
+                            </button>
+                            <input type="number" name="password-length" id="password-length-input"
+                                class="password-length" value="20">
+                            <button class="button button__plus">
+                                <img src="/src/icons/square-plus.svg" alt="">
+                            </button>
+                        </div>
                     </div>
                     <div class="config-option">
-                        <label for="password-length-input">Exlude: </label>
+                        <label for="chars-to-exclude">Exclude: </label>
                         <input type="text" name="chars-to-exclude" id="chars-to-exclude" class="chars-to-exclude">
                     </div>
                 </div>
             </section>
         </header>
         <main class="main-container">
-            <section class="password-container">
+            <section class="section-password-container">
                 <div class="password-input-group">
                     <label for="password-input">Your Password</label>
                     <input type="text" name="password" id="password-input" class="password">
@@ -68,7 +88,15 @@
             </section>
         </main>
         <footer class="footer">
-            <section class="copy">&copy; 2023 - Paulo Wells</section>
+            <section class="section-copy">&copy; 2023 - Paulo Wells</section>
+            <section class="section-attribution">
+                <span>
+                    Background:
+                </span>
+                <a
+                    href="https://www.freepik.com/free-vector/background-gradient-line-abstract-design_34221324.htm#query=technology%20background&position=44&from_view=search&track=ais">Image
+                    by AndreaCharlesta</a> on Freepik
+            </section>
         </footer>
     </div>
     <script src="js/index.js"></script>

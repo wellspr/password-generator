@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 1rem 0;
+
+    .attribution {
+        display: flex;
+        gap: .5rem;
+    }
+}

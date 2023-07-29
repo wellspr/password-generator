@@ -156,21 +156,45 @@ const numbersCheckbox = document.getElementById("numbers-check");
 numbersCheckbox.checked = true;
 numbersCheckbox.addEventListener("change", (e) => {
     includesNumbers = e.target.checked;
+
+    if (includesNumbers) {
+        document.querySelector(".config-option .numbers").src = "/src/icons/square-check.svg";
+    } else {
+        document.querySelector(".config-option .numbers").src = "/src/icons/square.svg";
+    }
 });
 const lclettersCheckbox = document.getElementById("lcletters-check");
 lclettersCheckbox.checked = true;
 lclettersCheckbox.addEventListener("change", (e) => {
     includesLowerCaseLetters = e.target.checked;
+
+    if (includesLowerCaseLetters) {
+        document.querySelector(".config-option .lcletters").src = "/src/icons/square-check.svg";
+    } else {
+        document.querySelector(".config-option .lcletters").src = "/src/icons/square.svg";
+    }
 });
 const uclettersCheckbox = document.getElementById("ucletters-check");
 uclettersCheckbox.checked = true;
 uclettersCheckbox.addEventListener("change", (e) => {
     includesUpperCaseLetters = e.target.checked;
+
+    if (includesUpperCaseLetters) {
+        document.querySelector(".config-option .ucletters").src = "/src/icons/square-check.svg";
+    } else {
+        document.querySelector(".config-option .ucletters").src = "/src/icons/square.svg";
+    }
 });
 const symbolsCheckbox = document.getElementById("symbols-check");
 symbolsCheckbox.checked = true;
 symbolsCheckbox.addEventListener("change", (e) => {
     includesSymbols = e.target.checked;
+
+    if (includesSymbols) {
+        document.querySelector(".config-option .symbols").src = "/src/icons/square-check.svg";
+    } else {
+        document.querySelector(".config-option .symbols").src = "/src/icons/square.svg";
+    }
 });
 
 const passwordInput = document.getElementById("password-input");
@@ -186,12 +210,37 @@ provideFreshPassword();
 
 const buttonCopy = document.querySelector(".button__copy");
 
+let textCopied = false;
+const buttonCopyLabel = document.querySelector(".button__copy .label");
+const buttonCopyImage = document.querySelector(".button__copy img");
+
 buttonCopy.addEventListener("click", () => {
-    navigator.clipboard.writeText(passwordInput.value);
+    navigator.clipboard.writeText(passwordInput.value).then(() => {
+        textCopied = true;
+        buttonCopyLabel.innerHTML = "Copied!";
+        buttonCopyImage.src = "/src/icons/check.svg";
+        buttonCopy.classList.add("button__copy--copied");
+    });
 });
 
 const buttonRegenerate = document.querySelector(".button__regenerate");
 
 buttonRegenerate.addEventListener("click", () => {
     provideFreshPassword();
+    textCopied = false;
+    buttonCopyLabel.innerHTML = "Copy";
+    buttonCopyImage.src = "/src/icons/clipboard.svg";
+    buttonCopy.classList.remove("button__copy--copied");
+});
+
+const buttonIncreaseLength = document.querySelector(".button__plus");
+buttonIncreaseLength.addEventListener("click", () => {
+    console.log("increase");
+    passwordLengthInput.value = Number(passwordLengthInput.value) + 1;
+});
+
+const buttonDecreaseLength = document.querySelector(".button__minus");
+buttonDecreaseLength.addEventListener("click", () => {
+    console.log("decrease");
+    passwordLengthInput.value = Number(passwordLengthInput.value) - 1;
 });

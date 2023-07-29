@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    .section-app-title {
+        margin: 1rem;
+        text-align: center;
+    }
+}

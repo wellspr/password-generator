@@ -1,0 +1,54 @@
+.button {
+    border: none;
+    cursor: pointer;
+
+    &__copy,
+    &__regenerate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        max-height: 4.5rem;
+
+        transition: all 0.2s;
+        backface-visibility: hidden;
+
+        &:hover {
+            transform: scale(1.1) translateY(-0.2rem);
+            box-shadow: 0 0.5rem 0.5rem -0.2rem;
+        }
+
+        &:active {
+            transform: scale(1.1);
+            box-shadow: 0 0.3rem 0.5rem -0.4rem;
+        }
+
+        img {
+            height: 3rem;
+        }
+    }
+
+    &__copy {
+        &--copied {
+            background-color: green;
+        }
+
+        &:not(&--copied):hover img {
+            animation-name: tilt;
+            animation-duration: .5s;
+            animation-direction: normal;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__regenerate {
+        &:hover img {
+            animation-name: spin;
+            animation-duration: .5s;
+            animation-direction: normal;
+            animation-fill-mode: both;
+        }
+    }
+}

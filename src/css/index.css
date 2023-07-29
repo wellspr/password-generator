@@ -1,3 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700;900&family=Public+Sans:wght@400;700;900&family=Roboto+Mono&family=Varela+Round&display=swap");
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+body {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(../images/34221324_jot7.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  color: #ddd;
+}
+
+.section-app-title {
+  margin-bottom: 1.5rem;
+}
+
+.section-password-config {
+  background-color: rgba(51, 51, 51, 0.7);
+}
+.section-password-config label {
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.section-password-container .password-input-group {
+  background-color: rgba(51, 51, 51, 0.7);
+}
+.section-password-container .password-input-group .password {
+  background-color: transparent;
+  color: #ddd;
+}
+
+.button {
+  background-color: transparent;
+}
+.button__copy, .button__regenerate {
+  background-color: rgba(51, 51, 51, 0.75);
+  color: #ddd;
+}
+
+.footer {
+  background-color: rgba(51, 51, 51, 0.3);
+}
+.footer a {
+  color: azure;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,14 +81,84 @@ html {
 }
 
 body {
-  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
 }
 
-.app {
-  height: 100vh;
+.section-app-title__title {
+  font-size: 3.5rem;
+  font-family: "Prompt", sans-serif;
+  letter-spacing: 3px;
+}
+
+.section-password-config label {
+  font-size: 1.4rem;
+}
+
+.section-password-container .password-input-group label {
+  font-size: 2rem;
+}
+.section-password-container .password-input-group label::after {
+  content: ":";
+}
+.section-password-container .password-input-group .password {
+  font-size: 3.5rem;
+  font-family: "Roboto Mono", monospace;
+}
+@media (max-width: 600px) {
+  .section-password-container .password-input-group .password {
+    font-size: 2.4rem;
+  }
+}
+
+.button__copy .label, .button__regenerate .label {
+  font-size: 1.8rem;
+}
+
+.footer {
+  font-size: 1.2rem;
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+}
+.button__copy, .button__regenerate {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  max-height: 4.5rem;
+  transition: all 0.2s;
+  backface-visibility: hidden;
+}
+.button__copy:hover, .button__regenerate:hover {
+  transform: scale(1.1) translateY(-0.2rem);
+  box-shadow: 0 0.5rem 0.5rem -0.2rem;
+}
+.button__copy:active, .button__regenerate:active {
+  transform: scale(1.1);
+  box-shadow: 0 0.3rem 0.5rem -0.4rem;
+}
+.button__copy img, .button__regenerate img {
+  height: 3rem;
+}
+.button__copy--copied {
+  background-color: green;
+}
+.button__copy:not(.button__copy--copied):hover img {
+  animation-name: tilt;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+  animation-fill-mode: both;
+}
+.button__regenerate:hover img {
+  animation-name: spin;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+  animation-fill-mode: both;
 }
 
 .header {
@@ -26,20 +168,9 @@ body {
   align-items: center;
   margin: 1.5rem 0;
 }
-.header .app-title {
-  font-size: 3rem;
+.header .section-app-title {
   margin: 1rem;
-}
-
-.password-config {
-  display: flex;
-  gap: 2rem;
-}
-.password-config label {
-  font-size: 1.4rem;
-}
-.password-config .password-length {
-  width: 6rem;
+  text-align: center;
 }
 
 .main-container {
@@ -51,65 +182,172 @@ body {
   gap: 2rem;
 }
 
-.password-container {
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 1rem 0;
+}
+.footer .attribution {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.section-password-config {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5rem;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+@media (max-width: 600px) {
+  .section-password-config {
+    width: 90%;
+  }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  .section-password-config {
+    width: 80%;
+  }
+}
+@media (min-width: 993px) {
+  .section-password-config {
+    flex-direction: column;
+  }
+}
+.section-password-config .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-grow: 1;
+}
+@media (max-width: 600px) {
+  .section-password-config .row {
+    width: 100%;
+  }
+}
+@media (min-width: 993px) {
+  .section-password-config .row {
+    flex-direction: row;
+  }
+}
+.section-password-config .row__1 .config-option label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.section-password-config .row__2 .config-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 993px) {
+  .section-password-config .row__2 .config-option {
+    flex-direction: row;
+  }
+}
+.section-password-config .row__2 .config-option label {
+  padding: 0.8rem;
+}
+.section-password-config .row__2 .config-option .controls {
+  position: relative;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .section-password-config .row__2 .config-option .controls {
+    width: 100px;
+  }
+}
+.section-password-config .row__2 .config-option .controls .button__minus:hover img,
+.section-password-config .row__2 .config-option .controls .button__plus:hover img {
+  transform: scale(1.2) translateY(-0.2rem);
+}
+.section-password-config .row__2 .config-option .controls .button__minus:active img,
+.section-password-config .row__2 .config-option .controls .button__plus:active img {
+  transform: scale(1.1) translateY(-0.1rem);
+}
+.section-password-config .row__2 .config-option .controls .button__minus {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+}
+.section-password-config .row__2 .config-option .controls .button__plus {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+}
+.section-password-config .row__2 .config-option .controls img {
+  width: 3rem;
+}
+.section-password-config .row__2 .config-option .controls .password-length {
+  position: absolute;
+  width: 100%;
+  font-size: 2rem;
+  appearance: textfield;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: #ddd;
+  padding: 1rem;
+}
+.section-password-config .row__2 .config-option .chars-to-exclude {
+  padding: 0.5rem;
+}
+.section-password-config .password-length {
+  width: 6rem;
+}
+
+.section-password-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
   margin: 0 2rem;
+  margin-bottom: 3rem;
 }
-.password-container .password-input-group {
+@media (max-width: 600px) {
+  .section-password-container {
+    width: 90%;
+  }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  .section-password-container {
+    width: 80%;
+  }
+}
+.section-password-container .password-input-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  border-radius: 1rem;
+  padding: 2rem;
 }
-.password-container .password-input-group label {
-  font-size: 2rem;
-}
-.password-container .password-input-group label::after {
-  content: ":";
-}
-.password-container .password-input-group .password {
-  font-size: 3.5rem;
+.section-password-container .password-input-group .password {
   padding: 1rem 2rem;
   border: none;
   text-align: center;
 }
-.password-container .controls {
+@media (max-width: 600px) {
+  .section-password-container .password-input-group .password {
+    width: 100%;
+  }
+}
+.section-password-container .controls {
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
-
-.button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.button__copy, .button__regenerate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background-color: rgba(10, 30, 15, 0.5);
-  border-radius: 1rem;
-  color: #ddd;
-  max-height: 4.5rem;
-}
-.button__copy .label, .button__regenerate .label {
-  font-size: 1.8rem;
-}
-.button__copy img, .button__regenerate img {
-  height: 3rem;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+.section-password-container .controls > * {
+  flex-grow: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
