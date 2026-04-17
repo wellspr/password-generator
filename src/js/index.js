@@ -16,129 +16,59 @@
         65 - 90 
 */
 
-const getSymbolsFromASCii = (excludedChars) => {
-    const symbols = [];
 
-    for (let i = 33; i <= 47; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            symbols.push(char);
-        }
-    }
-    for (let i = 58; i <= 64; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            symbols.push(char);
-        }
-    }
-    for (let i = 91; i <= 96; i++) {
-        let char = String.fromCharCode(i);
-        if (!!Object.values(excludedChars).includes(char)) {
-            symbols.push(char);
-        }
-    }
-    for (let i = 123; i <= 126; i++) {
-        let char = String.fromCharCode(i);
-        if (!!Object.values(excludedChars).includes(char)) {
-            symbols.push(char);
-        }
-    }
-
-    return symbols;
-};
-
-const getNumbersFromASCii = (excludedChars) => {
-    const numbers = [];
-
-    for (let i = 48; i <= 57; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            numbers.push(char);
-        }
-    }
-
-    return numbers;
-};
-
-const getLowercaseLettersFromASCii = (excludedChars) => {
-    const lcletters = [];
-
-    for (let i = 97; i <= 122; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            lcletters.push(char);
-        }
-    }
-
-    return lcletters;
-}
-
-const getUppercaseLettersFromASCii = (excludedChars) => {
-    const ucletters = [];
-
-    for (let i = 65; i <= 90; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            ucletters.push(char);
-        }
-    }
-
-    return ucletters;
-}
-
-const getCharsFromASCii = (excludedChars) => {
+const getCharsInRange = (ranges, excludedChars) => {
     const chars = [];
 
-    for (let i = 33; i <= 126; i++) {
-        let char = String.fromCharCode(i);
-        if (!Object.values(excludedChars).includes(char)) {
-            chars.push(char);
+    for (const [start, end] of ranges) {
+        for (let i = start; i <= end; i++) {
+            let char = String.fromCharCode(i);
+            if (!excludedChars.includes(char)) {
+                chars.push(char);
+            }
         }
     }
 
     return chars;
 }
 
-const frequencyTest = () => {
-    let frequency = {};
-
-    passwdChars.forEach(char => {
-        frequency[char] = 0;
-    });
-
-    for (let i = 0; i < 1000000; i++) {
-        let randomIndex = Math.floor(Math.random() * passwdChars.length);
-        const randomChar = passwdChars[randomIndex];
-        frequency[randomChar] += 1;
-    }
-
-    console.log(frequency);
-    console.log(1000000 / passwdChars.length)
-}
+const charGroups = {
+    symbols: () => [[33, 47], [58, 64], [91, 96], [123, 126]],
+    numbers: () => [[48, 57]],
+    lower: () => [[97, 122]],
+    upper: () => [[65, 90]]
+};
 
 const generatePassword = (numChars, includesNumbers, includesLowerCaseLetters, includesUpperCaseLetters, includesSymbols) => {
-    let requiredChars = [];
+    const excludedChars = document.getElementById("chars-to-exclude").value.replace(/\s/g, "").split("");
+    let rangesToUse = [];
 
-    const excludedChars = document.getElementById("chars-to-exclude").value.replace(/ /g, "").split("");
+    if (includesNumbers) rangesToUse.push(...charGroups.numbers());
+    if (includesLowerCaseLetters) rangesToUse.push(...charGroups.lower());
+    if (includesUpperCaseLetters) rangesToUse.push(...charGroups.upper());
+    if (includesSymbols) rangesToUse.push(...charGroups.symbols());
 
-    if (includesNumbers) {
-        requiredChars.push(getNumbersFromASCii(excludedChars));
-    }
-    if (includesLowerCaseLetters) {
-        requiredChars.push(getLowercaseLettersFromASCii(excludedChars));
-    }
-    if (includesUpperCaseLetters) {
-        requiredChars.push(getUppercaseLettersFromASCii(excludedChars));
-    }
-    if (includesSymbols) {
-        requiredChars.push(getSymbolsFromASCii(excludedChars));
-    }
+    let passwdChars = getCharsInRange(rangesToUse, excludedChars);
 
-    let passwdChars = requiredChars.flat();
+    const n = passwdChars.length;
+
+    if ( n === 0) return "";
 
     let password = "";
+
+    const maxSafeValue = Math.floor(4294967296 / n) * n;
+
+    const buffer = new Uint32Array(1);
+
     for (let i = 0; i < numChars; i++) {
-        let randomIndex = Math.floor(Math.random() * passwdChars.length);
+        let randomValue;
+
+        do {        
+            window.crypto.getRandomValues(buffer);
+            randomValue = buffer[0];
+        } while (randomValue >= maxSafeValue);
+        
+        let randomIndex = randomValue % n;
         const randomChar = passwdChars[randomIndex];
         password += randomChar;
     }
