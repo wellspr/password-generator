@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "sass": "sass ./sass/main.scss ./public/css/index.css --watch"
+    "sass": "sass ./sass/main.scss ./public/css/index.css",
+    "sass:watch": "sass ./sass/main.scss ./public/css/index.css --watch"
   },
   "devDependencies": {
     "sass": "^1.99.0",
