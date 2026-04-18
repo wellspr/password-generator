@@ -1,10 +1,15 @@
 .footer {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
     gap: 3rem;
-    padding: 1rem 0;
+    padding: 2rem;
+
+    .section-copy {
+        display: flex;
+        gap: 0.5rem;
+    }
 
     .section-attribution {
         display: flex;
@@ -14,7 +19,7 @@
     .section-github {
         & a > * {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             gap: 0.5rem;
         }
     }
