@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "sass": "sass ./sass/main.scss ./public/css/index.css",
-    "sass:watch": "sass ./sass/main.scss ./public/css/index.css --watch"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "sass": "^1.99.0",

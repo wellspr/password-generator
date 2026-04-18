@@ -6,14 +6,6 @@
     padding: 3rem;
     border-radius: 1rem;
 
-    @media (max-width: 600px) {
-        width: 90%;
-    }
-
-    @media (min-width: 601px) and (max-width: 992px) {
-        width: 80%;
-    }
-
     @media (min-width: 993px) {
         flex-direction: column;
     }
@@ -35,6 +27,9 @@
 
         &__1 {
             .config-option {
+
+                flex-grow: 1;
+
                 label {
                     display: flex;
                     gap: 0.5rem;
@@ -71,13 +66,12 @@
 
                     .button__minus,
                     .button__plus {
-
                         &:hover img {
-                            transform: scale(1.2) translateY(-.2rem);
+                            transform: scale(1.2) translateY(-0.2rem);
                         }
 
                         &:active img {
-                            transform: scale(1.1) translateY(-.1rem);
+                            transform: scale(1.1) translateY(-0.1rem);
                         }
                     }
 
@@ -101,11 +95,9 @@
                         position: absolute;
                         width: 100%;
                         font-size: 2rem;
-                        appearance: textfield;
+                        appearance: none;
                         text-align: center;
-                        background-color: transparent;
                         border: none;
-                        color: $color-font-light;
                         padding: 1rem;
                     }
                 }
@@ -130,14 +122,6 @@
     margin: 0 2rem;
     margin-bottom: 3rem;
 
-    @media (max-width: 600px) {
-        width: 90%;
-    }
-
-    @media (min-width: 601px) and (max-width: 992px) {
-        width: 80%;
-    }
-
     .password-input-group {
         display: flex;
         flex-direction: column;
@@ -161,10 +145,25 @@
     .controls {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        gap: 3rem;
 
         & > * {
             flex-grow: 1;
         }
+    }
+}
+
+
+.section-password-config,
+.section-password-container {
+    width: 100%;
+    max-width: 80rem;
+
+    @media (max-width: 600px) {
+        width: 90%;
+    }
+
+    @media (min-width: 601px) and (max-width: 992px) {
+        width: 80%;
     }
 }

@@ -1,4 +1,5 @@
 import { generatePassword } from "./lib";
+import "../sass/main.scss";
 
 let includesNumbers = true;
 let includesLowerCaseLetters = true;

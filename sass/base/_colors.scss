@@ -1,5 +1,7 @@
+@use "../abstracts/variables" as vars;
+
 body {
-    color: $color-font-light;
+    color: vars.$color-font-light;
 }
 
 .section-app-title {
@@ -7,20 +9,33 @@ body {
 }
 
 .section-password-config {
-    background-color: $color-background-box;
+    background-color: vars.$color-background-box;
 
     label {
         background-color: rgba(#333, 0.5);
+    }
+
+    .row {
+        &__2 {
+            .config-option {
+                .controls {
+                    .password-length {
+                        background-color: transparent;
+                        color: vars.$color-font-light;
+                    }
+                }
+            }
+        }
     }
 }
 
 .section-password-container {
     .password-input-group {
-        background-color: $color-background-box;
+        background-color: vars.$color-background-box;
 
         .password {
             background-color: transparent;
-            color: $color-font-light;
+            color: vars.$color-font-light;
         }
     }
 }
